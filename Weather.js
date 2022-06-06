@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Dimensions } from "react-native";
 import PropTypes from "prop-types";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -9,26 +9,26 @@ const weatherOptions = {
   Thunderstorm: {
     iconName: "weather-lightning",
     gradient: ["#373B44", "#4286f4"],
-    title: "Thunderstorm in the house",
-    subtitle: "Actually, outside of the house",
+    title: "천둥번개!!",
+    subtitle: "천둥의 신 토르가 온다!!",
   },
   Drizzle: {
     iconName: "weather-hail",
     gradient: ["#89F7FE", "#66A6FF"],
-    title: "Drizzle",
-    subtitle: "Is like rain, but gay 🏳️‍🌈",
+    title: "이슬 주세요",
+    subtitle: "첫잔은 원샷이겠죠?",
   },
   Rain: {
     iconName: "weather-rainy",
     gradient: ["#00C6FB", "#005BEA"],
-    title: "Raining like a MF",
-    subtitle: "For more info look outside",
+    title: "It`s Rainism",
+    subtitle: "일단 차에 타봐",
   },
   Snow: {
     iconName: "weather-snowy",
     gradient: ["#7DE2FC", "#B9B6E5"],
-    title: "Cold as balls",
-    subtitle: "Do you want to build a snowman? Fuck no.",
+    title: "하얀 쓰레기",
+    subtitle: "let it go~",
   },
   Atmosphere: {
     iconName: "weather-hail",
@@ -38,7 +38,7 @@ const weatherOptions = {
     iconName: "weather-sunny",
     gradient: ["#FF7300", "#FEF253"],
     title: "햇빛 짱짱맨~",
-    subtitle: "화상조심~~~",
+    subtitle: "날은 엄청 좋아요",
   },
   Clouds: {
     iconName: "weather-cloudy",
@@ -49,14 +49,14 @@ const weatherOptions = {
   Mist: {
     iconName: "weather-hail",
     gradient: ["#4DA0B0", "#D39D38"],
-    title: "Mist!",
-    subtitle: "It's like you have no glasses on.",
+    title: "안개빛 조명은",
+    subtitle: "운전 조심하세요",
   },
   Dust: {
     iconName: "weather-hail",
     gradient: ["#4DA0B0", "#D39D38"],
-    title: "Dusty",
-    subtitle: "Thanks a lot China 🖕🏻",
+    title: "먼지....",
+    subtitle: "북서풍...",
   },
   Haze: {
     iconName: "weather-hail",
@@ -74,22 +74,22 @@ export default function Weather({ temp, condition, latitude, longitude }) {
     >
       <StatusBar barStyle="light-content" />
 
-      <View style={styles.halfContainer}>
-        <View>
+      <View style={styles.data}>
+        <View style={styles.halfContainer}>
           <MaterialCommunityIcons
-            size={80}
+            size={90}
             name={weatherOptions[condition].iconName}
             color="white"
           />
           <Text style={styles.temp}>{temp}°</Text>
         </View>
-      </View>
 
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{weatherOptions[condition].title}</Text>
-        <Text style={styles.subtitle}>
-          {weatherOptions[condition].subtitle}
-        </Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+          <Text style={styles.subtitle}>
+            {weatherOptions[condition].subtitle}
+          </Text>
+        </View>
       </View>
 
       <MyPosition latitude={latitude} longitude={longitude} />
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   temp: {
-    fontSize: 42,
+    fontSize: 35,
     color: "white",
   },
   halfContainer: {
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "white",
-    fontSize: 44,
+    fontSize: 40,
     fontWeight: "300",
     marginBottom: 10,
     textAlign: "left",
@@ -136,13 +136,17 @@ const styles = StyleSheet.create({
   subtitle: {
     fontWeight: "600",
     color: "white",
-    fontSize: 24,
+    fontSize: 15,
     textAlign: "left",
   },
   textContainer: {
-    alignItems: "flex-start",
-    paddingHorizontal: 40,
+    flex: 1.7,
+    alignItems: "center",
+    paddingHorizontal: 20,
     justifyContent: "center",
+  },
+  data: {
+    flexDirection: "row",
     flex: 1,
   },
 });
