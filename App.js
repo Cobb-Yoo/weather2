@@ -32,10 +32,10 @@ export default class extends React.Component {
       isLoading: false,
       condition: weather[0].main,
       temp,
-      // latitude: latitude,
-      // longitude: longitude,
-      latitude: 35.2487,
-      longitude: 128.9024,
+      latitude: latitude,
+      longitude: longitude,
+      // latitude: 35.2487,
+      // longitude: 128.9024,
     });
   };
   getLocation = async () => {
