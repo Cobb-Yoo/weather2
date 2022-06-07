@@ -81,7 +81,7 @@ export default function Weather({ temp, condition, latitude, longitude }) {
             name={weatherOptions[condition].iconName}
             color="white"
           />
-          <Text style={styles.temp}>{temp}°</Text>
+          <Text style={styles.temp}>{temp - 273} °</Text>
         </View>
 
         <View style={styles.textContainer}>
