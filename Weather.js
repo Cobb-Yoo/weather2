@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MyPosition from "./MyPosition";
+import { useState } from "react";
 
 const weatherOptions = {
   Thunderstorm: {
@@ -66,14 +67,41 @@ const weatherOptions = {
   },
 };
 
-export default function Weather({ temp, condition, latitude, longitude }) {
+export default function Weather({
+  temp,
+  condition,
+  latitude,
+  longitude,
+  day0_dt,
+  day0_tmp,
+  day0_weather,
+  day1_dt,
+  day1_tmp,
+  day1_weather,
+  day2_dt,
+  day2_tmp,
+  day2_weather,
+  day3_dt,
+  day3_tmp,
+  day3_weather,
+  day4_dt,
+  day4_tmp,
+  day4_weather,
+  day5_dt,
+  day5_tmp,
+  day5_weather,
+  day6_dt,
+  day6_tmp,
+  day6_weather,
+}) {
+  const [show, setShowCaf] = useState(false);
+
   return (
     <LinearGradient
       colors={weatherOptions[condition].gradient}
       style={styles.container}
     >
       <StatusBar barStyle="light-content" />
-
       <View style={styles.data}>
         <View style={styles.halfContainer}>
           <MaterialCommunityIcons
@@ -89,6 +117,78 @@ export default function Weather({ temp, condition, latitude, longitude }) {
           <Text style={styles.subtitle}>
             {weatherOptions[condition].subtitle}
           </Text>
+        </View>
+      </View>
+
+      <View style={styles.data}>
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day0_weather].iconName}
+            color="white"
+          />
+          <Text>{day0_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day0_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day1_weather].iconName}
+            color="white"
+          />
+          <Text>{day1_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day1_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day2_weather].iconName}
+            color="white"
+          />
+          <Text>{day2_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day2_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day3_weather].iconName}
+            color="white"
+          />
+          <Text>{day3_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day3_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day4_weather].iconName}
+            color="white"
+          />
+          <Text>{day4_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day4_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day5_weather].iconName}
+            color="white"
+          />
+          <Text>{day5_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day5_tmp) - 273}</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <MaterialCommunityIcons
+            size={30}
+            name={weatherOptions[day6_weather].iconName}
+            color="white"
+          />
+          <Text>{day6_dt}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day6_tmp) - 273}</Text>
         </View>
       </View>
 
@@ -121,6 +221,10 @@ const styles = StyleSheet.create({
     fontSize: 35,
     color: "white",
   },
+  daily_temp: {
+    fontSize: 20,
+    color: "white",
+  },
   halfContainer: {
     flex: 1,
     justifyContent: "center",
@@ -148,5 +252,9 @@ const styles = StyleSheet.create({
   data: {
     flexDirection: "row",
     flex: 1,
+  },
+  weekly: {
+    width: Dimensions.get("window").width / 7,
+    alignItems: "center",
   },
 });

@@ -2,6 +2,7 @@ import React from "react";
 import MapView from "react-native-maps";
 import {
   View,
+  Text,
   StyleSheet,
   Dimensions,
   Image,
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   },
   mapStyle: {
     width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height / 1.55,
+    height: Dimensions.get("window").height / 2,
     justifyContent: "center",
   },
 
