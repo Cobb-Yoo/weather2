@@ -67,35 +67,42 @@ const weatherOptions = {
   },
 };
 
+const week = [
+  "SUN",
+  "MON",
+  "TUE",
+  "WED",
+  "THU",
+  "FRI",
+  "SAT",
+  "SUN",
+  "MON",
+  "TUE",
+  "WED",
+  "THU",
+  "FRI",
+  "SAT",
+];
+let now = new Date();
+
 export default function Weather({
   temp,
   condition,
   latitude,
   longitude,
-  day0_dt,
-  day0_tmp,
-  day0_weather,
-  day1_dt,
-  day1_tmp,
-  day1_weather,
-  day2_dt,
   day2_tmp,
   day2_weather,
-  day3_dt,
   day3_tmp,
   day3_weather,
-  day4_dt,
   day4_tmp,
   day4_weather,
-  day5_dt,
   day5_tmp,
   day5_weather,
-  day6_dt,
   day6_tmp,
   day6_weather,
+  day7_tmp,
+  day7_weather,
 }) {
-  const [show, setShowCaf] = useState(false);
-
   return (
     <LinearGradient
       colors={weatherOptions[condition].gradient}
@@ -109,7 +116,7 @@ export default function Weather({
             name={weatherOptions[condition].iconName}
             color="white"
           />
-          <Text style={styles.temp}>{temp - 273} °</Text>
+          <Text style={styles.temp}>{temp - 273}°</Text>
         </View>
 
         <View style={styles.textContainer}>
@@ -120,75 +127,65 @@ export default function Weather({
         </View>
       </View>
 
-      <View style={styles.data}>
+      <View style={styles.data2}>
         <View style={styles.weekly}>
+          <Text style={styles.daily_day}>{week[now.getDay() + 1]} </Text>
           <MaterialCommunityIcons
-            size={30}
-            name={weatherOptions[day0_weather].iconName}
-            color="white"
-          />
-          <Text>{day0_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day0_tmp) - 273}</Text>
-        </View>
-
-        <View style={styles.weekly}>
-          <MaterialCommunityIcons
-            size={30}
-            name={weatherOptions[day1_weather].iconName}
-            color="white"
-          />
-          <Text>{day1_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day1_tmp) - 273}</Text>
-        </View>
-
-        <View style={styles.weekly}>
-          <MaterialCommunityIcons
-            size={30}
+            size={40}
             name={weatherOptions[day2_weather].iconName}
-            color="white"
+            color="gray"
           />
-          <Text>{day2_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day2_tmp) - 273}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day2_tmp) - 273}°</Text>
         </View>
 
         <View style={styles.weekly}>
+          <Text style={styles.daily_day}> {week[now.getDay() + 2]} </Text>
           <MaterialCommunityIcons
-            size={30}
+            size={40}
             name={weatherOptions[day3_weather].iconName}
-            color="white"
+            color="gray"
           />
-          <Text>{day3_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day3_tmp) - 273}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day3_tmp) - 273}°</Text>
         </View>
 
         <View style={styles.weekly}>
+          <Text style={styles.daily_day}> {week[now.getDay() + 3]} </Text>
           <MaterialCommunityIcons
-            size={30}
+            size={40}
             name={weatherOptions[day4_weather].iconName}
-            color="white"
+            color="gray"
           />
-          <Text>{day4_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day4_tmp) - 273}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day4_tmp) - 273}°</Text>
         </View>
 
         <View style={styles.weekly}>
+          <Text style={styles.daily_day}> {week[now.getDay() + 4]} </Text>
           <MaterialCommunityIcons
-            size={30}
+            size={40}
             name={weatherOptions[day5_weather].iconName}
-            color="white"
+            color="gray"
           />
-          <Text>{day5_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day5_tmp) - 273}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day5_tmp) - 273}°</Text>
         </View>
 
         <View style={styles.weekly}>
+          <Text style={styles.daily_day}> {week[now.getDay() + 5]} </Text>
           <MaterialCommunityIcons
-            size={30}
+            size={40}
             name={weatherOptions[day6_weather].iconName}
-            color="white"
+            color="gray"
           />
-          <Text>{day6_dt}</Text>
-          <Text style={styles.daily_temp}>{parseInt(day6_tmp) - 273}</Text>
+          <Text style={styles.daily_temp}>{parseInt(day6_tmp) - 273}°</Text>
+        </View>
+
+        <View style={styles.weekly}>
+          <Text style={styles.daily_day}> {week[now.getDay() + 6]} </Text>
+          <MaterialCommunityIcons
+            size={40}
+            name={weatherOptions[day7_weather].iconName}
+            color="gray"
+          />
+          <Text style={styles.daily_temp}>{parseInt(day7_tmp) - 273}°</Text>
         </View>
       </View>
 
@@ -222,7 +219,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   daily_temp: {
-    fontSize: 20,
+    fontSize: 25,
     color: "white",
   },
   halfContainer: {
@@ -253,8 +250,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
   },
+  data2: {
+    flexDirection: "row",
+  },
   weekly: {
-    width: Dimensions.get("window").width / 7,
+    width: Dimensions.get("window").width / 6,
     alignItems: "center",
+  },
+  daily_day: {
+    color: "black",
   },
 });
